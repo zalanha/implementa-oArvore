@@ -1,0 +1,32 @@
+/*No* */
+class Node {
+  constructor(valor) {
+    this.valor = valor;
+    this.esquerda = null;
+    this.direita = null;
+  }
+}
+/*Recursivo* */
+function contarNosRecursivo(no) {
+  if (no === null) return 0;
+  return 1 + contarNosRecursivo(no.esquerda) + contarNosRecursivo(no.direita);
+}
+
+/**sem recursividade */
+
+function contarNosIterativo(raiz) {
+  if (raiz === null) return 0;
+
+  let contador = 0;
+  let fila = [raiz];
+
+  while (fila.length > 0) {
+    let noAtual = fila.shift(); 
+    contador++;
+
+    if (noAtual.esquerda !== null) fila.push(noAtual.esquerda);
+    if (noAtual.direita !== null) fila.push(noAtual.direita);
+  }
+
+  return contador;
+}
